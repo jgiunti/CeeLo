@@ -7,6 +7,7 @@
         <link type="text/css" rel="stylesheet" href="../CSS/styles.css" />
         <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js'></script>    
         <script language='Javascript' type='text/javascript' src='../JS/jq.js'></script>
+        <script language='Javascript' type='text/javascript' src='../JS/leadboard.js'></script>
     </head>
     <body>
         <?php 
@@ -54,6 +55,17 @@
                     </th>
                     <th>
                         Outcome
+                    </th>
+                </tr>
+            </table>
+            
+            <table id="leaderBoard" style="visibility: hidden">
+                <tr>
+                    <th>
+                        Username
+                    </th>
+                    <th>
+                        Points
                     </th>
                 </tr>
             </table>
