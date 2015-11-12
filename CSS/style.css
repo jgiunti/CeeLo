@@ -30,7 +30,7 @@ button {
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
-  animation: intro .7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: intro .7s cubic-bezier(0.175, 0.7, 0.2, 1.2) forwards;
 }
 
 .button-container{
@@ -41,27 +41,27 @@ button {
   transform: translate(-50%,-50%);
 }
 
-.profile {
+.prof {
   position: relative;
 }
-.profile--open {
+.prof--open {
 }
-.profile--open .profile-form {
+.prof--open .prof-form {
   visibility: visible;
   height: auto;
   opacity: 1;
   transform: translateY(-6em);
   padding-top: 12em;
 }
-.profile--open .profile-fields {
+.prof--open .prof-fields {
   opacity: 1;
   visibility: visible;
 }
-.profile--open .profile-avatar {
+.prof--open .prof-avatar {
   transform: translate(-50%, -1.5em);
   border-radius: 50%;
 }
-.profile-form {
+.prof-form {
   position: relative;
   background: white;
   visibility: hidden;
@@ -73,15 +73,15 @@ button {
   transition: 
     opacity .4s ease-in-out,
     height .4s ease-in-out,
-    transform .4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    padding .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform .4s cubic-bezier(0.175, 0.7, 0.2, 1.2),
+    padding .4s cubic-bezier(0.175, 0.7, 0.2, 1.2);
 }
-.profile-fields {
+.prof-fields {
   opacity: 0;
   visibility: hidden;
-  transition: opacity .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: opacity .2s cubic-bezier(0.175, 0.7, 0.2, 1.2);
 }
-.profile-avatar {
+.prof-avatar {
   position: absolute;
   z-index: 1;
   left: 50%;
@@ -94,10 +94,10 @@ button {
   transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   will-change: transform;
 }
-.profile-avatar:focus {
+.prof-avatar:focus {
   outline: 0;
 }
-.profile-footer {
+.prof-footer {
   padding-top: 1em;
 }
 
@@ -175,7 +175,48 @@ input:valid + .label {
   background: #B0B0B0;
 }
 
+#userInfo {
+    position: relative;
+    background-color: #181818;
+    height: 150px;
+    margin-left: -20%;
+    margin-top: 5%;
+    margin-right: -20%;
+    border-radius: .25rem;
+    transform: translate(-50%,-50%);
+}
 
+#userInfo th, td, tr {
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+}
+
+#user {
+    margin-left: 25%;
+    margin-top: 15%;
+    font-family: 'Verdana';
+}
+
+#user table {
+    
+    left: 50%;
+    top: 50%;
+}
+
+.titleAcct h1 {
+  position: relative;
+  width: 20em;
+  left: 25%;
+  color: whitesmoke;
+  font-family: 'Verdana';
+}
+.container2 {
+  position: absolute;
+  width: 20em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
 
 @keyframes intro {
   from {
