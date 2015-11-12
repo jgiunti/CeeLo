@@ -39,7 +39,10 @@
                     echo '</td>';
                 echo '</tr>';               
                 ?>
-            </table>             
+            </table>
+            <div class="btnView">
+                <div class="btnTxt">View Game History</div>
+            </div>
         </div>
     </body>
 </html>
