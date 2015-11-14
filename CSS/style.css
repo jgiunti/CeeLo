@@ -217,6 +217,7 @@ input:valid + .label {
   top: 50%;
   transform: translate(-50%,-50%);
 }
+<<<<<<< HEAD
 /*FOR GAME PAGE -- UNDER CONSTRUCTION
 .container3 {
   position: absolute;
@@ -263,6 +264,8 @@ input:valid + .label {
     padding .4s cubic-bezier(0.175, 0.7, 0.2, 1.2);
 }
 */
+=======
+>>>>>>> master
 
 @keyframes intro {
   from {
