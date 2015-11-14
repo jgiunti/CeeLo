@@ -63,7 +63,7 @@ button {
 }
 .prof-form {
   position: relative;
-  background: white;
+  background: whitesmoke;
   visibility: hidden;
   opacity: 0;
   height: 0;
@@ -217,6 +217,52 @@ input:valid + .label {
   top: 50%;
   transform: translate(-50%,-50%);
 }
+/*FOR GAME PAGE -- UNDER CONSTRUCTION
+.container3 {
+  position: absolute;
+  left: 44%;
+  top: 70%;
+}
+
+.gameContainer {
+  position: absolute;
+  width: 24em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  animation: intro .7s cubic-bezier(0.175, 0.7, 0.2, 1.2);
+}
+
+.game-avatar {
+  position: absolute;
+  z-index: 1;
+  left: 40%;
+  transform: translateX(-30%);
+  border-radius: .25em;
+  overflow: hidden;
+  width: 15em;
+  height: 15em;
+  display: block;
+  transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform;
+}
+
+.bet-form {
+  position: relative;
+  background: whitesmoke;
+  visibility: hidden;
+  opacity: 0;
+  height: 0;button-container
+  padding: 3em;
+  border-radius: .25em;
+  -webkit-filter: drop-shadow(0 0 2em rgba(0,0,0,0.2));
+  transition: 
+    opacity .4s ease-in-out,
+    height .4s ease-in-out,
+    transform .4s cubic-bezier(0.175, 0.7, 0.2, 1.2),
+    padding .4s cubic-bezier(0.175, 0.7, 0.2, 1.2);
+}
+*/
 
 @keyframes intro {
   from {

@@ -1,5 +1,7 @@
 <?php
 
+require 'dbConnection.php';
+
 $db = new Database();
 
 $conn = $db->connection;
