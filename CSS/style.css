@@ -1,0 +1,276 @@
+
+html {
+  font-size: 100%;
+  line-height: 1.5;
+  height: 100%;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  font-family: 'Work Sans';
+  min-height: 100%;
+  background: linear-gradient(to bottom, #330000 0%, #CC0033 100%);
+  color: #777;
+}
+img {
+  vertical-align: middle;
+  max-width: 100%;
+}
+button {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.container {
+  position: absolute;
+  width: 24em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  animation: intro .7s cubic-bezier(0.175, 0.7, 0.2, 1.2) forwards;
+}
+
+.button-container{
+  position: absolute;
+  width: 50em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.prof {
+  position: relative;
+}
+.prof--open {
+}
+.prof--open .prof-form {
+  visibility: visible;
+  height: auto;
+  opacity: 1;
+  transform: translateY(-6em);
+  padding-top: 12em;
+}
+.prof--open .prof-fields {
+  opacity: 1;
+  visibility: visible;
+}
+.prof--open .prof-avatar {
+  transform: translate(-50%, -1.5em);
+  border-radius: 50%;
+}
+.prof-form {
+  position: relative;
+  background: whitesmoke;
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  padding: 3em;
+  border-radius: .25em;
+  -webkit-filter: drop-shadow(0 0 2em rgba(0,0,0,0.2));
+  transition: 
+    opacity .4s ease-in-out,
+    height .4s ease-in-out,
+    transform .4s cubic-bezier(0.175, 0.7, 0.2, 1.2),
+    padding .4s cubic-bezier(0.175, 0.7, 0.2, 1.2);
+}
+.prof-fields {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .2s cubic-bezier(0.175, 0.7, 0.2, 1.2);
+}
+.prof-avatar {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 1.25em;
+  overflow: hidden;
+  width: 4.5em;
+  height: 4.5em;
+  display: block;
+  transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform;
+}
+.prof-avatar:focus {
+  outline: 0;
+}
+.prof-footer {
+  padding-top: 1em;
+}
+
+.menu-button {
+  margin: 85px;
+  border: 0;
+  font-size: 1.5rem;
+  height: 5.0rem;
+  line-height: 4.5rem;
+  padding: 0 2.5rem;
+  color: white;
+  background: #181818 ;
+  text-transform: uppercase;
+  border-radius: .25rem;
+  letter-spacing: .2em;
+  transition: background .2s;
+}
+
+.field {
+  position: relative;
+  margin-bottom: 2em;
+}
+.label {
+  position: absolute;
+  height: 2rem;
+  line-height: 2rem;
+  bottom: 0;
+  color: #999;
+  transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.input {
+  width: 100%;
+  font-size: 100%;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  height: 2rem;
+  line-height: 2rem;
+  border-bottom: 1px solid #eee;
+  color: #777;
+  transition: all .2s ease-in;
+}
+.input:focus {
+  outline: 0;
+  border-color: #ccc;
+}
+
+
+.input:focus + .label,
+input:valid + .label {
+  transform: translateY(-100%);
+  font-size: 0.75rem;
+  color: #ccc;
+}
+
+
+.btn {
+  border: 0;
+  font-size: 0.75rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  padding: 0 1.5rem;
+  color: white;
+  background: #181818 ;
+  text-transform: uppercase;
+  border-radius: .25rem;
+  letter-spacing: .2em;
+  transition: background .2s;
+}
+.btn:focus {
+  outline: 0;
+}
+.btn:hover,
+.btn:focus {
+  background: #B0B0B0;
+}
+
+#userInfo {
+    position: relative;
+    background-color: #181818;
+    height: 150px;
+    margin-left: -20%;
+    margin-top: 5%;
+    margin-right: -20%;
+    border-radius: .25rem;
+    transform: translate(-50%,-50%);
+}
+
+#userInfo th, td, tr {
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+}
+
+#user {
+    margin-left: 25%;
+    margin-top: 15%;
+    font-family: 'Verdana';
+}
+
+#user table {
+    
+    left: 50%;
+    top: 50%;
+}
+
+.titleAcct h1 {
+  position: relative;
+  width: 20em;
+  left: 25%;
+  color: whitesmoke;
+  font-family: 'Verdana';
+}
+.container2 {
+  position: absolute;
+  width: 20em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+/*FOR GAME PAGE -- UNDER CONSTRUCTION
+.container3 {
+  position: absolute;
+  left: 44%;
+  top: 70%;
+}
+
+.gameContainer {
+  position: absolute;
+  width: 24em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  animation: intro .7s cubic-bezier(0.175, 0.7, 0.2, 1.2);
+}
+
+.game-avatar {
+  position: absolute;
+  z-index: 1;
+  left: 40%;
+  transform: translateX(-30%);
+  border-radius: .25em;
+  overflow: hidden;
+  width: 15em;
+  height: 15em;
+  display: block;
+  transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform;
+}
+
+.bet-form {
+  position: relative;
+  background: whitesmoke;
+  visibility: hidden;
+  opacity: 0;
+  height: 0;button-container
+  padding: 3em;
+  border-radius: .25em;
+  -webkit-filter: drop-shadow(0 0 2em rgba(0,0,0,0.2));
+  transition: 
+    opacity .4s ease-in-out,
+    height .4s ease-in-out,
+    transform .4s cubic-bezier(0.175, 0.7, 0.2, 1.2),
+    padding .4s cubic-bezier(0.175, 0.7, 0.2, 1.2);
+}
+*/
+
+@keyframes intro {
+  from {
+    opacity: 0;
+    top: 0;
+  }
+  to {
+    opacity: 1;
+    top: 50%;
+  }
+}
