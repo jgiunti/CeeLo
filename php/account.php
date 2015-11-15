@@ -11,10 +11,10 @@
     <body>
         <?php 
         require_once 'User.php';
+        require_once 'gameHist.php';
         $user = new User(1);
-        ?>          
-            
-            
+        $history = new GameHistory(1);
+        ?>              
         <div id="user">
             <div class="titleAcct">
                 <h1>User Info</h1>
@@ -41,28 +41,44 @@
                         echo $user->loss;
                     echo '</td>';
                 echo '</tr>';               
-                ?>
+                ?>          
+            </table>
             <div class="container2">
                 <div class="prof-footer">
-                    <button class="btn">View Game History</button>
+                    <button id ="btnViewHist" class="btn">View Game History</button>
                     <button class="btn">Back</button>
                 </div>
             </div> 
-            
-            </table>
             <div id="body">
                 <table id="gameHist" style="visibility: hidden">
-                 <tr>
-                        <th>
-                            Date
-                        </th>
-                        <th>
-                            Points Earned
-                        </th>
-                        <th>
-                            Outcome
-                        </th>
-                  </tr>
+                <tr>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Points Earned
+                    </th>
+                    <th>
+                        Outcome
+                    </th>
+                </tr>
+                <?php 
+                foreach ($history->hist as $game) {
+                    echo '<tr>';
+                        echo '<td>';
+                            echo $game->timestamp;
+                        echo '</td>';
+                        echo '<td>';
+                            echo $game->points;
+                        echo '</td>';
+                        echo '<td>';
+                            echo $game->outcome;
+                        echo '</td>';
+                    echo '</tr>';
+
+                }
+
+                ?>
                 </table>
             </div>
         </div>
