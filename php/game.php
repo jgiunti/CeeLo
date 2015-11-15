@@ -1,3 +1,8 @@
+<?php 
+$turn = 1;
+
+?>
+
 <!DOCTYPE html>
 <html >
     <head>
@@ -14,7 +19,17 @@
     <div class="menu">
       <div class="menu-form">
           <div class="menu-button">
-            <button id="btnRoll" class="btn">Roll Dice</button>            
+          <?php
+          if ($turn == 1){
+              echo '<button id="btnRoll" class="btn">Roll Dice</button>';
+          }
+          else {
+              echo '<button id="btnRoll" class="btn" disabled>Roll Dice</button>';
+          }
+          
+          echo '<input type="hidden" name="turn" value='.$turn.'>'
+          ?>
+          
         </div>
       </div>
      </div>
