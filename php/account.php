@@ -75,9 +75,7 @@
                             echo $game->outcome;
                         echo '</td>';
                     echo '</tr>';
-
                 }
-
                 ?>
                 </table>
             </div>
