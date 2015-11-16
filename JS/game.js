@@ -7,6 +7,8 @@ $(document).ready(function()
     
     lastRoll = 0;
     opponentRoll = 0;
+    oRollsWon = 0;
+    pRollsWon = 0;
     
     $('#btnRoll').click(function()
     {             
@@ -22,7 +24,7 @@ function diceRoll(turn) {
     alert(dice1 + ', ' + dice2 + ', ' + dice3);
 
 
-    $.post("../php/gameController.php", { d1: dice1, d2: dice2, d3 : dice3 }, function(rText, status)
+    $.post("../php/gameController.php", { d1: dice1, d2: dice2, d3 : dice3, turn: turn, points: 0 }, function(rText, status)
     {   
         alert('lastroll: ' + lastRoll);
         alert('this roll: ' + rText);

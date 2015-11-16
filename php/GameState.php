@@ -9,42 +9,57 @@ require 'dbConnection.php';
 
 class GameState {
     public $timeStamp;
-    public $pDice1;
-    public $pDice2;
-    public $pDice3;
-    public $oDice1;
-    public $oDice2;
-    public $oDice3;
+    public $turn;
+    public $oRollsWon;
+    public $pRollsWon;
+    public $points;
+    public $lastRoll;
     public $userID;
     
     function __construct($uID) {
         $db = new Database();
-        $conn = $db->connection;
-        $this->userID = $uID;
-
-        if($data = $conn->query("SELECT * FROM gamestate WHERE userID =".$uID)){
+        $conn = $db->connection;  
+        //echo 'state';
+        $data = $conn->query("SELECT * FROM gamestate WHERE userID =".$uID);
+        if($data->num_rows > 0) {
             $resRow = $data->fetch_assoc();
             $this->timeStamp = $resRow['timestamp'];
-            $this->pDice1 = $resRow['pDice1'];
-            $this->pDice2 = $resRow['pDice2'];
-            $this->pDice3 = $resRow['pDice3'];
-            $this->oDice1 = $resRow['oDice1'];
-            $this->oDice2 = $resRow['oDice2'];
-            $this->oDice3 = $resRow['oDice3'];
+            $this->turn = $resRow['turn'];
+            $this->pRollsWon = $resRow['pRollsWon'];
+            $this->oRollsWon = $resRow['oRollsWon'];
+            $this->points = $resRow['points'];
+            $this->lastRoll = $resRow['lastRoll'];
         }
+         else {            
+            $this->insertNewState($uID, $conn);          
+        }
+        $this->userID = $uID;
         $db->closeConnection();
     }   
      
     function updateGameState() {
        $db = new Database();
        $conn = $db->connection;
-
-       $query = "UPDATE gamestate SET timestamp = ?, pDice1 = ?, pDice2 = ?, pDice3 = ?, oDice1 = ?, oDice2 = ?, oDice3 = ? WHERE userID =".$this->userID;
-
-       $prep = $db->prepare($query);
-       $prep->bind_param("iiiiiii",  $this->timeStamp, $$this->pDice1, $this->pDice2, $this->pDice3, $this->oDice1, $this->oDice2, $this->oDice3);
+       $this->timeStamp = 20151115;
+       $query = "UPDATE gamestate SET timestamp = ?, turn = ?, pRollsWon = ?, oRollsWon = ?, points = ?, lastRoll = ? WHERE userID =".$this->userID;   
+       
+       $prep = $conn->prepare($query);
+       $prep->bind_param("iiiiii",  $this->timeStamp, $this->turn, $this->pRollsWon, $this->oRollsWon, $this->points, $this->lastRoll);
        $prep->execute();
 
        $db->closeConnection();
+    }
+    
+    function insertNewState($uID, $conn) {
+        $this->timeStamp = 20151115;
+        $this->turn = 1;
+        $this->pRollsWon = 0;
+        $this->oRollsWon = 0;
+        $this->points = 0;
+        $this->lastRoll = 0;         
+        $query = "INSERT INTO gamestate(userID, turn, pRollsWon, oRollsWon, points, timestamp, lastRoll) VALUES(?, ?, ?, ?, ?, ?, ?)";           
+        $prep = $conn->prepare($query);
+        $prep->bind_param("iiiiiii",  $uID, $this->turn, $this->pRollsWon, $this->oRollsWon, $this->points, $this->timeStamp, $this->lastRoll);
+        $prep->execute();
     }
 }
