@@ -19,7 +19,6 @@ class GameState {
     function __construct($uID) {
         $db = new Database();
         $conn = $db->connection;  
-        //echo 'state';
         $data = $conn->query("SELECT * FROM gamestate WHERE userID =".$uID);
         if($data->num_rows > 0) {
             $resRow = $data->fetch_assoc();

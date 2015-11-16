@@ -32,7 +32,7 @@ else {
             $res = $dArray[2];
         }
         else {
-            $res = $dArray[2] > $lastroll ? 'win' : 'lose';
+            $res = $dArray[2] > $state->lastRoll ? 'win' : 'lose';
         }
         echo $res;
     }
@@ -41,12 +41,12 @@ else {
             $res = $dArray[0];
         }
         else {
-            $res = $dArray[0] > $lastroll ? 'win' : 'lose';
+            $res = $dArray[0] > $state->lastRolll ? 'win' : 'lose';
         }
         echo $res;
     }
     else {
-        $res = null;
+        $res = 'again';
     }
 }
 
@@ -76,7 +76,7 @@ elseif($res == 'win') {
     $state->updateGameState();
     //checkWinLoss($state); 
 }
- elseif($res != null) {
+ elseif($res == 'again') {
     $state->lastRoll = $res;
     $state->turn = $turn == 1 ? 0 : 1;
     $state->updateGameState();
