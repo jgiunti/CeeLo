@@ -15,35 +15,30 @@ $dArray = array($d1, $d2, $d3);
 sort($dArray);
 
 $state = new GameState(1);
+$lastRoll = $state->lastRoll;
 
-$res = null;
-
-if($dArray[0] == 1 && $dArray[2] == 2 && $dArray[3] == 3) {
-    $res = 'lose';
-    echo $res;   
+if($dArray[0] == 1 && $dArray[1] == 2 && $dArray[2] == 3) {
+    $res = 'lose';  
 }
 elseif ($dArray[0] == 4 && $dArray[1] == 5 && $dArray[2] == 6) {
     $res = 'win';
-    echo $res;
 }
 else {
     if($dArray[0] == $dArray[1]) {      
-        if($state->lastRoll == 0) {
+        if($lastRoll == 0) {
             $res = $dArray[2];
         }
         else {
-            $res = $dArray[2] > $state->lastRoll ? 'win' : 'lose';
+            $res = $dArray[2] > $lastRoll ? 'win' : 'lose';
         }
-        echo $res;
     }
     elseif($dArray[1] == $dArray[2]) {
-        if($state->lastRoll == 0) {
+        if($lastRoll == 0) {
             $res = $dArray[0];
         }
         else {
-            $res = $dArray[0] > $state->lastRolll ? 'win' : 'lose';
+            $res = $dArray[0] > $lastRoll ? 'win' : 'lose';
         }
-        echo $res;
     }
     else {
         $res = 'again';
@@ -55,10 +50,12 @@ if($res == 'lose') {
     if($turn == 1) {
         $state->oRollsWon = $state->oRollsWon + 1;
         $state->points = $points;
+        $state->turn = 1;
     }
     else {
         $state->pRollsWon = $state->pRollsWon + 1;
         $state->points = $points;
+        $state->turn = 1;
     }
     $state->updateGameState();
     //checkWinLoss($state);  
@@ -68,19 +65,22 @@ elseif($res == 'win') {
     if($turn == 1) {
         $state->pRollsWon = $state->pRollsWon + 1;
         $state->points = $points;
+        $state->turn = 1;
     }
     else {
         $state->oRollsWon = $state->oRollsWon + 1;
         $state->points = $points;
+        $state->turn = 1;
     }
     $state->updateGameState();
     //checkWinLoss($state); 
 }
- elseif($res == 'again') {
+ elseif($res != 'again') {
     $state->lastRoll = $res;
     $state->turn = $turn == 1 ? 0 : 1;
     $state->updateGameState();
 }
+echo $res;
 
 
 

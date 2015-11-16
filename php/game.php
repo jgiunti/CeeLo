@@ -1,5 +1,10 @@
 <?php 
-$turn = 1;
+if(empty($_GET)) {
+    $turn = 1;
+}
+else {
+    $turn = $_GET['turn'];
+}
 
 ?>
 
@@ -24,7 +29,7 @@ $turn = 1;
               echo '<button id="btnRoll" class="btn">Roll Dice</button>';
           }
           else {
-              echo '<button id="btnRoll" class="btn" disabled>Roll Dice</button>';
+              echo '<button id="btnRoll" class="btn">Roll Dice</button>';
           }
           
           echo '<input type="hidden" name="turn" value='.$turn.'>'

@@ -19,7 +19,7 @@ class GameState {
     function __construct($uID) {
         $db = new Database();
         $conn = $db->connection;  
-        $data = $conn->query("SELECT * FROM gamestate WHERE userID =".$uID);
+        $data = $conn->query("SELECT timestamp, turn, pRollsWon, oRollsWon, points, lastRoll FROM gamestate WHERE userID = ".$uID);
         if($data->num_rows > 0) {
             $resRow = $data->fetch_assoc();
             $this->timeStamp = $resRow['timestamp'];

@@ -23,14 +23,19 @@ function diceRoll(turn) {
     dice3 = Math.floor((Math.random() * 6) + 1);
     alert(dice1 + ', ' + dice2 + ', ' + dice3);
 
-
     $.post("../php/gameController.php", { d1: dice1, d2: dice2, d3 : dice3, turn: turn, points: 0 }, function(rText, status)
     {   
-        alert('lastroll: ' + lastRoll);
         alert('this roll: ' + rText);
-        lastRoll = rText;
-
+        processResponse(rText, turn);
     });
+}
+
+function processResponse(rText, turn) {
+    if(rText != "again") {
+        turn = turn == 1 ? 0 : 1;
+    }
+    alert('response text : ' + rText);
+    window.location = "../php/game.php?turn=" + turn;
 }
 
 
