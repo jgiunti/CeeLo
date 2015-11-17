@@ -1,8 +1,10 @@
 $(document).ready(function()
 {
     turn = $('[name="turn"]').val();
-    if(turn === 0) {
-        diceRoll(turn);
+    //alert(turn);
+    if(turn == 0) {
+        setTimeout(function(){diceRoll(turn);}, 3000);
+        //diceRoll(turn);
     }
     
     lastRoll = 0;
@@ -34,6 +36,10 @@ function processResponse(rText, turn) {
     if(rText == "gameWon" || rText == "gameLost") {
         alert(rText);
         window.location = "../main.html";
+        return;
+    }
+    else if(rText == 'win' || rText == 'lose') {
+        window.location = "../php/game.php?turn=1";
         return;
     }
     else if(rText != "again") {

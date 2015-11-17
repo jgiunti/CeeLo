@@ -29,7 +29,7 @@ else {
               echo '<button id="btnRoll" class="btn">Roll Dice</button>';
           }
           else {
-              echo '<button id="btnRoll" class="btn">Roll Dice</button>';
+              echo '<button id="btnRoll" class="btn" disabled>Roll Dice</button>';
           }
           
           echo '<input type="hidden" name="turn" value='.$turn.'>'
