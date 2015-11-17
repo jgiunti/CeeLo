@@ -80,17 +80,21 @@ elseif($res == 'win') {
     $state->turn = $turn == 1 ? 0 : 1;
     $state->updateGameState();
 }
-echo $res;
+
+checkWinLoss($state, $res);
 
 
 
-function checkWinLoss($state) {
+function checkWinLoss($state, $result) {
     if($state->oRollsWon == 3) {
-        //player loses game
+        $result = 'gameLost';
+        $state->submitGameResult("L", 0);
     }
     elseif($state->pRollsWon == 3) {
-        //player wins
+        $result = 'gameWon';
+        $state->submitGameResult("W", 10);
     }
+    echo $result;
 }
 
 

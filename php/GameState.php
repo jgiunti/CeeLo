@@ -39,7 +39,7 @@ class GameState {
     function updateGameState() {
        $db = new Database();
        $conn = $db->connection;
-       $this->timeStamp = 20151115;
+       $this->timeStamp = date('Ymd');
        $query = "UPDATE gamestate SET timestamp = ?, turn = ?, pRollsWon = ?, oRollsWon = ?, points = ?, lastRoll = ? WHERE userID =".$this->userID;   
        
        $prep = $conn->prepare($query);
@@ -49,8 +49,28 @@ class GameState {
        $db->closeConnection();
     }
     
-    function insertNewState($uID, $conn) {
-        $this->timeStamp = 20151115;
+    function submitGameResult($result, $points) {
+       $db = new Database();
+       $conn = $db->connection;
+       $this->timeStamp = date('Ymd');
+       
+       $query = "INSERT INTO gameHistory(userID, timestamp, pointsEarned, outcome) VALUES (?, ?, ?, ?)";   
+       
+       $prep = $conn->prepare($query);
+       $prep->bind_param("iiis", $this->userID, $this->timeStamp, $points, $result);
+       $prep->execute();
+       
+       $query = "DELETE FROM gamestate WHERE userID = ?";
+       $prep = $conn->prepare($query);
+       $prep->bind_param("i", $this->userID);
+       $prep->execute();
+       
+       $db->closeConnection();
+       
+    }
+    
+    private function insertNewState($uID, $conn) {
+        $this->timeStamp = date('Ymd');
         $this->turn = 1;
         $this->pRollsWon = 0;
         $this->oRollsWon = 0;
