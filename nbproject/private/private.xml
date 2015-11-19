@@ -5,9 +5,11 @@
         <group>
             <file>file:/G:/xampp/htdocs/CeeLo/php/GameResult.php</file>
             <file>file:/G:/xampp/htdocs/CeeLo/php/GameState.php</file>
+            <file>file:/G:/xampp/htdocs/CeeLo/main.html</file>
             <file>file:/G:/xampp/htdocs/CeeLo/php/gameController.php</file>
             <file>file:/G:/xampp/htdocs/CeeLo/php/game.php</file>
             <file>file:/G:/xampp/htdocs/CeeLo/JS/game.js</file>
+            <file>file:/G:/xampp/htdocs/CeeLo/JS/jq.js</file>
             <file>file:/G:/xampp/htdocs/CeeLo/php/dbConnection.php</file>
         </group>
     </open-files>

@@ -88,7 +88,7 @@ checkWinLoss($state, $res);
 function checkWinLoss($state, $result) {
     if($state->oRollsWon == 3) {
         $result = 'gameLost';
-        $state->submitGameResult("L", 0);
+        $state->submitGameResult("L", -10);
     }
     elseif($state->pRollsWon == 3) {
         $result = 'gameWon';

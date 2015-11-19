@@ -81,4 +81,24 @@ class GameState {
         $prep->bind_param("iiiiiii",  $uID, $this->turn, $this->pRollsWon, $this->oRollsWon, $this->points, $this->timeStamp, $this->lastRoll);
         $prep->execute();
     }
+    
+    public static function checkGameInProgress($uID) {
+        $db = new Database();
+        $conn = $db->connection;  
+        $data = $conn->query("SELECT * FROM gamestate WHERE userID = ".$uID);
+        $db->closeConnection();
+        return $data->num_rows > 0;
+    }
+    
+    public static function clearGameInProgress($uID) {
+        $db = new Database();
+        $conn = $db->connection;
+
+        $query = "DELETE FROM gamestate WHERE userID = ?";
+        $prep = $conn->prepare($query);
+        $prep->bind_param("i", $uID);
+        $prep->execute();
+
+        $db->closeConnection();       
+    }
 }
