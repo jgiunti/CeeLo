@@ -85,9 +85,9 @@ class GameState {
     public static function checkGameInProgress($uID) {
         $db = new Database();
         $conn = $db->connection;  
-        $data = $conn->query("SELECT * FROM gamestate WHERE userID = ".$uID);
-        $db->closeConnection();
-        return $data->num_rows > 0;
+        $data = $conn->query("SELECT * FROM gamestate WHERE userID =".$uID);
+        $db->closeConnection();      
+        return $data->num_rows;
     }
     
     public static function clearGameInProgress($uID) {
