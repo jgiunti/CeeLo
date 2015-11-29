@@ -34,10 +34,10 @@
     </head>
     <body onload="setTimeout('DiceDisappear()',3*1000)">
         <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,700' rel='stylesheet' type='text/css'>
-        <div id="search-box" align="center">
-            <form id="search-form" action="#">
-                <input type="text" id="search-input" name="search_text" placeholder="Enter Bet Amount" maxlength="140">
-                <input id="search-button" type="submit" name="search_button" value="&Alpha;&Omega;" />
+        <div id="submit-box" align="center">
+            <form id="submit-form" action="#">
+                <input type="text" id="submit-input" name="search_text" placeholder="Enter Bet Amount" maxlength="140">
+                <input id="submit-button" type="submit" name="search_button" value="&Alpha;&Omega;" />
                 <button class="btn" type="submit" onclick="document.getElementById('hidden').style.visibility ='visible'; diceRoll();">Roll!</button>
             </form>
         </div>
