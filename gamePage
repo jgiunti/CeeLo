@@ -1,0 +1,70 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="JS/game.js"></script>
+        <script language="Javascript">
+            function DiceDisappear() {
+            var div = '';
+            if (document.all) div = document.all.diceImage;
+            if (document.getElementById) div = document.getElementById('hidden');
+            if (div) div.innerHTML = '';
+            }
+        </script>
+        <?php
+            include 'game.php';
+            $d1 = $_POST['d1'];
+            $d2 = $_POST['d2'];
+            $d3 = $_POST['d3'];
+            if($d1 == 1 || $d1 == 2 || $d1 == 3 || $d1 == 4 || $d1 == 5 || $d1 == 6){
+                echo "<script type='text/javascript'>\n";
+                echo "document.getElementById(\"dice1\").style.visibility = \"visible\";\n";
+                echo "</script>";
+            }
+        ?>
+
+        <title>Game</title>
+        <link rel="stylesheet" href="CSS/style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    </head>
+    <body onload="setTimeout('DiceDisappear()',3*1000)">
+        <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,700' rel='stylesheet' type='text/css'>
+        <div id="submit-box" align="center">
+            <form id="submit-form" action="#">
+                <input type="text" id="submit-input" name="search_text" placeholder="Enter Bet Amount" maxlength="140">
+                <input id="submit-button" type="submit" name="search_button" value="" />
+                <button class="btn" type="submit" onclick="document.getElementById('hidden').style.visibility ='visible'; diceRoll();">Roll!</button>
+            </form>
+        </div>
+
+        <div align="center">
+            <img src="Images/1.gif"  id="dice1"/>
+            <img src="Images/2.gif"  id="dice2"/>
+            <img src="Images/3.gif"  id="dice3"/>
+            <img src="Images/4.gif"  id="dice4"/>
+            <img src="Images/5.gif"  id="dice5"/>
+            <img src="Images/6.gif"  id="dice6"/>
+        </div>
+
+    <div id="diceImage">
+        <div style = "visibility:hidden" id = "hidden">
+            <img src = "http://images.rapgenius.com/8fpfkmaom3siogc9pnaagcnmx.715x500x6.gif" />
+
+        </div>
+    </div>
+
+
+<div class="container3" align="center">
+    <div class="prof-footer">
+        <button class="btn" id="show1">Save Game</button>
+        <button class="btn" id="show2">Back</button>
+    </div>
+</div>
+    </body>
+</html>
+
