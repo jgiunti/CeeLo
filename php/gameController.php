@@ -6,9 +6,7 @@ $d1 = $_POST['d1'];
 $d2 = $_POST['d2'];
 $d3 = $_POST['d3'];
 $turn = $_POST['turn'];
-//$orolls = $_POST['oRollsWon'];
-//$prolls = $_POST['pRollsWon'];
-$points = $_POST['points'];
+$points = 0;
 
 $dArray = array($d1, $d2, $d3);
 
@@ -82,8 +80,6 @@ elseif($res == 'win') {
 }
 
 checkWinLoss($state, $res);
-
-
 
 function checkWinLoss($state, $result) {
     if($state->oRollsWon == 3) {

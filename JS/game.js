@@ -23,11 +23,11 @@ function diceRoll(turn) {
     dice1 = Math.floor((Math.random() * 6) + 1);
     dice2 = Math.floor((Math.random() * 6) + 1);
     dice3 = Math.floor((Math.random() * 6) + 1);
-    alert(dice1 + ', ' + dice2 + ', ' + dice3);
+    //alert(dice1 + ', ' + dice2 + ', ' + dice3);
+    diceFadeIn(dice1, dice2, dice3);
 
-    $.post("../php/gameController.php", { d1: dice1, d2: dice2, d3 : dice3, turn: turn, points: 0 }, function(rText, status)
+    $.post("../php/gameController.php", { d1: dice1, d2: dice2, d3 : dice3, turn: turn }, function(rText, status)
     {   
-        alert('this roll: ' + rText);
         processResponse(rText, turn);
     });
 }
@@ -35,18 +35,42 @@ function diceRoll(turn) {
 function processResponse(rText, turn) {
     if(rText == "gameWon" || rText == "gameLost") {
         alert(rText);
-        window.location = "../main.html";
+        diceFadeOut();
+        setTimeout(function(){window.location = "../main.html" + turn;}, 10000);
         return;
     }
     else if(rText == 'win' || rText == 'lose') {
-        window.location = "../php/game.php?turn=1";
+        diceFadeOut();
+        setTimeout(function(){window.location = "../php/game.php?turn=1";}, 10000);
         return;
     }
     else if(rText != "again") {
         turn = turn == 1 ? 0 : 1;
     }
-    alert('response text : ' + rText);
-    window.location = "../php/game.php?turn=" + turn;
+    diceFadeOut();
+    setTimeout(function(){window.location = "../php/game.php?turn=" + turn;}, 5000);
+    
+}
+
+function diceFadeIn(d1, d2, d3) {
+    $('#d1').html('<img id="dice1" src="../pictures/die' + d1 +'.gif"/>').promise().done(function() {
+        $('#dice1').hide();
+        $('#dice1').fadeIn(3000);
+    });
+    $('#d2').html('<img id="dice2" src="../pictures/die' + d2 +'.gif"/>').promise().done(function() {
+        $('#dice2').hide();
+        $('#dice2').fadeIn(3000);
+    });
+    $('#d3').html('<img id="dice3" src="../pictures/die' + d3 +'.gif"/>').promise().done(function() {
+        $('#dice3').hide();
+        $('#dice3').fadeIn(3000);
+    });
+}
+
+function diceFadeOut() {
+    $('#dice1').fadeOut(3000);
+    $('#dice2').fadeOut(3000);
+    $('#dice3').fadeOut(3000);
 }
 
 

@@ -269,13 +269,39 @@ input:valid + .label {
 }
 
 .diceImage {
-    left: 50%;    
+    left: 50%;   
+    position: absolute;
+}
+
+.dice {
+    float: left;
+}
+
+.diceWrapper {
+    width: 531px;
+    position: absolute;
+    height: 177px;
+    background-color: gray;
+    left: 33.5%;
+    top: 40%;
 }
 
 #dice1, #dice2, #dice3, #dice4, #dice5, #dice6 {
-    visibility: hidden;
+    //visibility: hidden;
+}
+
+.scoreWrapper {
+    left: 37%;
+    position: absolute;
+}
+
+#gamescore th{
+    padding: 1em;
 }
  
+#gamescore td{
+    border: 0;
+}
 
 #submit-box {
     width: 200px; 
