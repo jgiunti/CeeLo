@@ -217,7 +217,7 @@ input:valid + .label {
   top: 50%;
   transform: translate(-50%,-50%);
 }
-/*FOR GAME PAGE -- UNDER CONSTRUCTION
+
 .container3 {
   position: absolute;
   left: 44%;
@@ -252,17 +252,10 @@ input:valid + .label {
   background: whitesmoke;
   visibility: hidden;
   opacity: 0;
-  height: 0;button-container
-  padding: 3em;
-  border-radius: .25em;
-  -webkit-filter: drop-shadow(0 0 2em rgba(0,0,0,0.2));
-  transition: 
-    opacity .4s ease-in-out,
-    height .4s ease-in-out,
-    transform .4s cubic-bezier(0.175, 0.7, 0.2, 1.2),
-    padding .4s cubic-bezier(0.175, 0.7, 0.2, 1.2);
+  height: 0;
 }
-*/
+ 
+
 
 @keyframes intro {
   from {
@@ -274,3 +267,86 @@ input:valid + .label {
     top: 50%;
   }
 }
+
+.diceImage {
+    left: 50%;    
+}
+
+#dice1, #dice2, #dice3, #dice4, #dice5, #dice6 {
+    visibility: hidden;
+}
+ 
+
+#submit-box {
+    width: 200px; 
+    height: 28px; 
+    margin: 0; 
+    position: absolute; 
+    display: block; 
+    top: 20px; 
+    left: 0px;
+}
+ 
+#submit-form {
+    width: 200px; 
+    height: 28px; 
+    margin: 0; 
+    position: relative;
+}
+ 
+#submit-input {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+    position: relative; 
+    margin: 0; 
+    padding: 5px 35px 5px 5px; 
+    width: 158px; 
+    outline:none; 
+    color: #999; 
+    background: #ececec; 
+    border: 1px solid #d2d2d2; 
+    border-bottom: 1px solid #d8d8d8; 
+    border-radius: 3px; 
+    -webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 0px 6px rgba(0,0,0,0.07); 
+    -moz-box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 0px 6px rgba(0,0,0,0.07); 
+    -o-box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 0px 6px rgba(0,0,0,0.07); 
+    box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 0px 6px rgba(0,0,0,0.07);}
+ 
+#submit-input:focus {
+    background: #fcfcfc; 
+    color: #666; 
+    border: 1px solid #d2d2d2; 
+    border-bottom: 1px solid #d8d8d8;
+}
+ 
+#submit-button {
+    position: absolute; 
+    left: 172px; 
+    top: 0px; 
+    width: 28px; 
+    height: 28px; 
+    text-indent: -9999px; 
+    outline: none; 
+    border: 1px solid #ccc; 
+    border-bottom: 1px solid #d2d2d2; 
+    border-radius: 0px 3px 3px 0px; 
+    cursor: pointer; 
+    -webkit-box-shadow: -2px 0px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 14px 13px rgba(255,255,255,0.57); 
+    -moz-box-shadow: -2px 0px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 14px 13px rgba(255,255,255,0.57); 
+    -o-box-shadow: -2px 0px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 14px 13px rgba(255,255,255,0.57); 
+    box-shadow: -2px 0px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 14px 13px rgba(255,255,255,0.57); 
+}
+ 
+#submit-button:hover {
+    -webkit-box-shadow: -2px 0px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 14px 13px rgba(255,255,255,0.75); 
+    -moz-box-shadow: -2px 0px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 14px 13px rgba(255,255,255,0.75); 
+    -o-box-shadow: -2px 0px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 14px 13px rgba(255,255,255,0.75); 
+    box-shadow: -2px 0px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 14px 13px rgba(255,255,255,0.75);
+}
+ 
+#submit-button:active {
+    -webkit-box-shadow: -2px 0px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.58), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px -14px 13px rgba(255,255,255,0.57); 
+    -moz-box-shadow: -2px 0px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.58), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px -14px 13px rgba(255,255,255,0.57); 
+    -o-box-shadow: -2px 0px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.58), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px -14px 13px rgba(255,255,255,0.57); 
+    box-shadow: -2px 0px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.58), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px -14px 13px rgba(255,255,255,0.57);
+}
+
