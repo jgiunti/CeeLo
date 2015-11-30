@@ -46,14 +46,14 @@ function processResponse(rText, turn) {
     }
     else if(rText == 'win' || rText == 'lose') {
         diceFadeOut();
-        setTimeout(function(){window.location = "../php/game.php?turn=1";}, 10000);
+        setTimeout(function(){redirect(1);}, 10000);
         return;
     }
     else if(rText != "again") {
         turn = turn == 1 ? 0 : 1;
     }
     diceFadeOut();
-    setTimeout(function(){window.location = "../php/game.php?turn=" + turn;}, 5000);
+    setTimeout(function(){redirect(turn);}, 5000);
     
 }
 
@@ -76,6 +76,12 @@ function diceFadeOut() {
     $('#dice1').fadeOut(3000);
     $('#dice2').fadeOut(3000);
     $('#dice3').fadeOut(3000);
+}
+
+function redirect(turn) {
+    $('.hiddenForm').html('<form action="../php/game.php" name="frmTurn" method="post" style="display:none;"><input type="text" name="turn" value="' + turn + '" /></form>');
+
+    document.forms['frmTurn'].submit();
 }
 
 

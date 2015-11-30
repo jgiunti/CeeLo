@@ -270,7 +270,10 @@ input:valid + .label {
 
 #rollToBeat td{
     border: 0;
-    
+}
+
+.hiddenForm {
+    visibility: hidden;
 }
 
 @keyframes intro {

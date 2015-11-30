@@ -1,9 +1,9 @@
 <?php 
-if(empty($_GET)) {
+if(empty($_POST)) {
     $turn = 1;
 }
 else {
-    $turn = $_GET['turn'];
+    $turn = $_POST['turn'];
 }
 require_once 'GameState.php';
 $state = new GameState(1);
@@ -65,8 +65,10 @@ $state = new GameState(1);
 
               echo '<input type="hidden" name="turn" value='.$turn.'>'
               ?>
+                
             <button id="btnBack" class="btn">Back</button>
             </div>
+            <div class="hiddenForm"></div>
         </div>       
     </body>
 </html>

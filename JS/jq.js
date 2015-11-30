@@ -8,8 +8,9 @@ $(document).ready(function()
    $('#new').click(function()
     {   
         $.post("php/mainController.php", { new: 1 }, function(rText, status)
-        {   
-            window.location = "php/game.php?turn=1";
+        {
+            $('.hiddenForm').html('<form action="php/game.php" name="frmTurn" method="post" style="display:none;"><input type="text" name="turn" value="1" /></form>');
+            document.forms['frmTurn'].submit();
         });  
         
    });
@@ -22,7 +23,8 @@ $(document).ready(function()
             {
                 var response = jQuery.parseJSON(rText);             
                 if(response[0] == 'continue') {
-                    window.location = "php/game.php?turn=" + response[1];
+                    $('.hiddenForm').html('<form action="php/game.php" name="frmTurn" method="post" style="display:none;"><input type="text" name="turn" value="' + response[1] + '" /></form>');
+                    document.forms['frmTurn'].submit();
                 }
                 else {
                     alert('no game in progress');

@@ -31,18 +31,20 @@ else {
         else {
             if($dArray[0] > $lastRoll) {
                 $res = 'win';
+                $state->trip = 0;
             }
             else {
                 if($trip == 1) {
                     $res = 'lose';
+                    $state->trip = 0;
                 }
                 else {
                     $res = 'win';
+                    $state->trip = 0;
                 }
             }          
         }
-    }
-    
+    }  
     elseif($dArray[0] == $dArray[1]) {      
         if($lastRoll == 0) {
             $res = $dArray[2];
