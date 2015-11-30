@@ -21,7 +21,29 @@ $(document).ready(function()
     {
         window.location = "../main.html";
     }); 
-   
+    
+    var dialog = $("#dialog");
+
+    dialog.dialog({
+        title: "Game Result",
+        modal: true,
+        draggable: false,
+        resizable: false,
+        autoOpen: false,
+        width: 500,
+        height: 400,
+        buttons: [
+        {
+          text: "Ok",
+          "class": 'btn',
+          click: function() {
+            window.location = "../main.html";
+          }
+ 
+      
+        }
+      ]
+    }); 
 });
 
 function diceRoll(turn) {
@@ -39,9 +61,16 @@ function diceRoll(turn) {
 
 function processResponse(rText, turn) {
     if(rText == "gameWon" || rText == "gameLost") {
-        alert(rText);
-        diceFadeOut();
-        setTimeout(function(){window.location = "../main.html";}, 10000);
+        if(rText == "gameWon") {
+            $('#dialog').html("Congrats, You Won!").promise().done(function() {
+                $('#dialog').dialog("open");
+            });
+        }
+        else {
+            $('#dialog').html("Sorry, You Lost!").promise().done(function() {
+                $('#dialog').dialog("open");
+            });
+        }
         return;
     }
     else if(rText == 'win' || rText == 'lose') {
@@ -53,7 +82,7 @@ function processResponse(rText, turn) {
         turn = turn == 1 ? 0 : 1;
     }
     diceFadeOut();
-    setTimeout(function(){redirect(turn);}, 5000);
+    setTimeout(function(){redirect(turn);}, 7000);
     
 }
 

@@ -41,6 +41,14 @@ button {
   transform: translate(-50%,-50%);
 }
 
+.ui-dialog {
+    font-family: 'Work Sans';    
+}
+
+.ui-dialog-titlebar-close {
+  visibility: hidden;
+}
+
 .prof {
   position: relative;
 }

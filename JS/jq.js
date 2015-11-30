@@ -9,8 +9,7 @@ $(document).ready(function()
     {   
         $.post("php/mainController.php", { new: 1 }, function(rText, status)
         {
-            $('.hiddenForm').html('<form action="php/game.php" name="frmTurn" method="post" style="display:none;"><input type="text" name="turn" value="1" /></form>');
-            document.forms['frmTurn'].submit();
+            newGameRedir(1);
         });  
         
    });
@@ -23,16 +22,14 @@ $(document).ready(function()
             {
                 var response = jQuery.parseJSON(rText);             
                 if(response[0] == 'continue') {
-                    $('.hiddenForm').html('<form action="php/game.php" name="frmTurn" method="post" style="display:none;"><input type="text" name="turn" value="' + response[1] + '" /></form>');
-                    document.forms['frmTurn'].submit();
-                }
-                else {
-                    alert('no game in progress');
+                    newGameRedir(response[1]);
                 }
             }
             catch(error)
             {
-                alert('no game in progress');
+                $('#dialog').html("There are no games in progress. Would you like to start a new game?").promise().done(function() {
+                    $('#dialog').dialog("open");
+                });
             }
             
         });       
@@ -47,5 +44,40 @@ $(document).ready(function()
     {             
         window.location = "../main.html";
    });
+   
+   var dialog = $("#dialog");
+
+    dialog.dialog({
+        title: "Can't Continue",
+        modal: true,
+        draggable: false,
+        resizable: false,
+        autoOpen: false,
+        width: 500,
+        height: 400,
+        buttons: [
+        {
+            text: "Ok",
+            "class": 'btn',
+            click: function() {
+              newGameRedir(1);;
+            }
+ 
+      
+        },
+        {
+            text: "Cancel",
+            "class": 'btn',
+            click: function() {
+                $(this).dialog("close");
+            }
+        }
+      ]
+    }); 
 });
+
+function newGameRedir(turn) {
+    $('.hiddenForm').html('<form action="php/game.php" name="frmTurn" method="post" style="display:none;"><input type="text" name="turn" value="'+ turn +'" /></form>');
+    document.forms['frmTurn'].submit();
+}
 

@@ -13,11 +13,13 @@ $state = new GameState(1);
 <html >
     <head>
       <meta charset="UTF-8">
-      <title>Game</title>
-          <link rel="stylesheet" href="../CSS/style.css">         
+      <title>Game</title>               
           <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,700' rel='stylesheet' type='text/css'>
-          <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js'></script>
-          <script language='Javascript' type='text/javascript' src='../JS/game.js'></script>           
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+          <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+          <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>          
+          <script language='Javascript' type='text/javascript' src='../JS/game.js'></script> 
+          <link rel="stylesheet" href="../CSS/style.css">   
     </head>
     <body>
         <div class="scoreWrapper">
@@ -69,7 +71,9 @@ $state = new GameState(1);
             <button id="btnBack" class="btn">Back</button>
             </div>
             <div class="hiddenForm"></div>
-        </div>       
+        </div>   
+        <div id="dialog">
+        </div>
     </body>
 </html>
 
