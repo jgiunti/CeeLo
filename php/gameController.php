@@ -14,6 +14,7 @@ sort($dArray);
 
 $state = new GameState(1);
 $lastRoll = $state->lastRoll;
+$trip = $state->trip;
 
 if($dArray[0] == 1 && $dArray[1] == 2 && $dArray[2] == 3) {
     $res = 'lose';  
@@ -22,20 +23,44 @@ elseif ($dArray[0] == 4 && $dArray[1] == 5 && $dArray[2] == 6) {
     $res = 'win';
 }
 else {
-    if($dArray[0] == $dArray[1]) {      
+    if(($dArray[0] == $dArray[1]) && ($dArray[1] == $dArray[2])) {
         if($lastRoll == 0) {
             $res = $dArray[2];
+            $state->trip = 1;
+        }
+        else {
+            if($dArray[0] > $lastRoll) {
+                $res = 'win';
+            }
+            else {
+                if($trip == 1) {
+                    $res = 'lose';
+                }
+                else {
+                    $res = 'win';
+                }
+            }          
+        }
+    }
+    
+    elseif($dArray[0] == $dArray[1]) {      
+        if($lastRoll == 0) {
+            $res = $dArray[2];
+            $state->trip = 0;
         }
         else {
             $res = $dArray[2] > $lastRoll ? 'win' : 'lose';
+            $state->trip = 0;
         }
     }
     elseif($dArray[1] == $dArray[2]) {
         if($lastRoll == 0) {
             $res = $dArray[0];
+            $state->trip = 0;
         }
         else {
             $res = $dArray[0] > $lastRoll ? 'win' : 'lose';
+            $state->trip = 0;
         }
     }
     else {

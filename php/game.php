@@ -34,6 +34,16 @@ $state = new GameState(1);
                 </tr>
             </table>
         </div>
+        <?php
+        if($state->lastRoll > 0) {
+            echo '<table id="rollToBeat">';
+            echo '<tr>';
+            echo '<th>Roll to beat : </th>';
+            echo '<td>'.$state->lastRoll.'</td>';
+            echo '</tr>';
+            echo '</table>';
+        }
+        ?>        
         <div class="diceWrapper">
             <div id="d1" class="dice">
             </div>
@@ -55,6 +65,7 @@ $state = new GameState(1);
 
               echo '<input type="hidden" name="turn" value='.$turn.'>'
               ?>
+            <button id="btnBack" class="btn">Back</button>
             </div>
         </div>       
     </body>

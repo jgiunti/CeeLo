@@ -17,20 +17,33 @@ $(document).ready(function()
     $('#continue').click(function()
     {   
         $.post("php/mainController.php", { new: 0 }, function(rText, status)
-        {
-            var response = jQuery.parseJSON(rText);           
-            if(response[0] == 'continue') {
-                window.location = "php/game.php?turn=" + response[1];
+        {              
+            try
+            {
+                var response = jQuery.parseJSON(rText);             
+                if(response[0] == 'continue') {
+                    window.location = "php/game.php?turn=" + response[1];
+                }
+                else {
+                    alert('no game in progress');
+                }
             }
-            else {
+            catch(error)
+            {
                 alert('no game in progress');
             }
+            
         });       
     });
    
    $('#profile').click(function()
     {             
         window.location = "php/account.php";
+   });
+   
+   $('#btnBack').click(function()
+    {             
+        window.location = "../main.html";
    });
 });
 

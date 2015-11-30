@@ -46,10 +46,10 @@
             <div class="container2">
                 <div class="prof-footer">
                     <button id ="btnViewHist" class="btn">View Game History</button>
-                    <button class="btn">Back</button>
+                    <button id="btnBack" class="btn">Back</button>
                 </div>
             </div> 
-            <div id="body">
+            <div class="historyWrap">
                 <table id="gameHist" style="visibility: hidden">
                 <tr>
                     <th>

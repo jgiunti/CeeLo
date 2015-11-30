@@ -15,7 +15,12 @@ $(document).ready(function()
     $('#btnRoll').click(function()
     {             
         diceRoll(turn);
-    });    
+    }); 
+    
+    $('#btnBack').click(function()
+    {
+        window.location = "../main.html";
+    }); 
    
 });
 
@@ -36,7 +41,7 @@ function processResponse(rText, turn) {
     if(rText == "gameWon" || rText == "gameLost") {
         alert(rText);
         diceFadeOut();
-        setTimeout(function(){window.location = "../main.html" + turn;}, 10000);
+        setTimeout(function(){window.location = "../main.html";}, 10000);
         return;
     }
     else if(rText == 'win' || rText == 'lose') {

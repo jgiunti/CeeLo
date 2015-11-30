@@ -15,11 +15,12 @@ class GameState {
     public $points;
     public $lastRoll;
     public $userID;
-    
+    public $trip;
+            
     function __construct($uID) {
         $db = new Database();
         $conn = $db->connection;  
-        $data = $conn->query("SELECT timestamp, turn, pRollsWon, oRollsWon, points, lastRoll FROM gamestate WHERE userID = ".$uID);
+        $data = $conn->query("SELECT timestamp, turn, pRollsWon, oRollsWon, points, lastRoll, trip FROM gamestate WHERE userID = ".$uID);
         if($data->num_rows > 0) {
             $resRow = $data->fetch_assoc();
             $this->timeStamp = $resRow['timestamp'];
@@ -28,6 +29,7 @@ class GameState {
             $this->oRollsWon = $resRow['oRollsWon'];
             $this->points = $resRow['points'];
             $this->lastRoll = $resRow['lastRoll'];
+            $this->trip = $resRow['trip'];
         }
          else {            
             $this->insertNewState($uID, $conn);          
@@ -40,10 +42,10 @@ class GameState {
        $db = new Database();
        $conn = $db->connection;
        $this->timeStamp = date('Ymd');
-       $query = "UPDATE gamestate SET timestamp = ?, turn = ?, pRollsWon = ?, oRollsWon = ?, points = ?, lastRoll = ? WHERE userID =".$this->userID;   
+       $query = "UPDATE gamestate SET timestamp = ?, turn = ?, pRollsWon = ?, oRollsWon = ?, points = ?, lastRoll = ?, trip = ? WHERE userID =".$this->userID;   
        
        $prep = $conn->prepare($query);
-       $prep->bind_param("iiiiii",  $this->timeStamp, $this->turn, $this->pRollsWon, $this->oRollsWon, $this->points, $this->lastRoll);
+       $prep->bind_param("iiiiiii",  $this->timeStamp, $this->turn, $this->pRollsWon, $this->oRollsWon, $this->points, $this->lastRoll, $this->trip);
        $prep->execute();
 
        $db->closeConnection();
@@ -75,10 +77,11 @@ class GameState {
         $this->pRollsWon = 0;
         $this->oRollsWon = 0;
         $this->points = 0;
-        $this->lastRoll = 0;         
-        $query = "INSERT INTO gamestate(userID, turn, pRollsWon, oRollsWon, points, timestamp, lastRoll) VALUES(?, ?, ?, ?, ?, ?, ?)";           
+        $this->lastRoll = 0;   
+        $this->trip = 0;  
+        $query = "INSERT INTO gamestate(userID, turn, pRollsWon, oRollsWon, points, timestamp, lastRoll, trip) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";           
         $prep = $conn->prepare($query);
-        $prep->bind_param("iiiiiii",  $uID, $this->turn, $this->pRollsWon, $this->oRollsWon, $this->points, $this->timeStamp, $this->lastRoll);
+        $prep->bind_param("iiiiiiii",  $uID, $this->turn, $this->pRollsWon, $this->oRollsWon, $this->points, $this->timeStamp, $this->lastRoll, $this->trip);
         $prep->execute();
     }
     
