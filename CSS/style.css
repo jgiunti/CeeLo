@@ -42,11 +42,29 @@ button {
 }
 
 .ui-dialog {
-    font-family: 'Work Sans';    
+    font-family: 'Work Sans';       
+}
+
+.ui-widget-content {
+    background: linear-gradient(to bottom, #330000 0%, #CC0033 100%);
+    color: #777;
 }
 
 .ui-dialog-titlebar-close {
   visibility: hidden;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border: 0;
+    font-size: 0.75rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    padding: 0 1.5rem;
+    color: white;
+    background: #181818 ;
+    text-transform: uppercase;
+    border-radius: .25rem;
+    letter-spacing: .2em;
+    transition: background .2s;
 }
 
 .prof {
