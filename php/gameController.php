@@ -58,7 +58,7 @@ else {
             $state->trip = 0;
         }
         else {
-            $res = $dArray[2] > $lastRoll ? 'win' : 'lose';
+            $res = $dArray[2] > $lastRoll && $trip == 0 ? 'win' : 'lose';
             $state->trip = 0;
         }
     }
@@ -68,7 +68,7 @@ else {
             $state->trip = 0;
         }
         else {
-            $res = $dArray[0] > $lastRoll ? 'win' : 'lose';
+            $res = $dArray[0] > $lastRoll && $trip == 0 ? 'win' : 'lose';
             $state->trip = 0;
         }
     }
