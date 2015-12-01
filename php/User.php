@@ -5,7 +5,8 @@
  *
  * @author Joe
  */
-require 'dbConnection.php';
+require_once 'dbConnection.php';
+
 
 class User {
     public $userName;

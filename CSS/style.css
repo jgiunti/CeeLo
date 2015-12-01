@@ -133,7 +133,9 @@ button {
   font-size: 1.5rem;
   height: 5.0rem;
   line-height: 4.5rem;
-  padding: 0 2.5rem;
+/*  padding: 0 2.5rem;*/
+  padding-left: 6.5rem;
+  padding-right: 2.5rem;
   color: white;
   background: #181818 ;
   text-transform: uppercase;
@@ -201,7 +203,29 @@ input:valid + .label {
   background: #B0B0B0;
 }
 
-#userInfo {
+#leaderBoard {
+    position: absolute;
+    background-color: #181818;
+    height: 50px;
+    border-radius: .25rem;
+    transform: translate(-50%,-50%);
+    left: 85%;
+    top: 8%;
+    
+}
+
+#leaderBoard th, td, tr {
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+    padding: 5px;
+}
+
+#leaderBoard caption {
+    font-family: 'Work Sans';
+    color: whitesmoke;
+}
+
+.userInfo {
     position: relative;
     background-color: #181818;
     height: 150px;
@@ -213,9 +237,10 @@ input:valid + .label {
     left: 45%;
 }
 
-#userInfo th, td, tr {
+.userInfo th, td, tr {
     border: 1px solid whitesmoke;
     color: whitesmoke;
+    padding: 5px;
 }
 
 .historyWrap {
@@ -329,10 +354,6 @@ input:valid + .label {
     background-color: gray;
     left: 33.5%;
     top: 40%;
-}
-
-#dice1, #dice2, #dice3, #dice4, #dice5, #dice6 {
-    //visibility: hidden;
 }
 
 .scoreWrapper {

@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['userID'])) {
+    header("Location:../login.html");
+}
+
+$sessionUser = $_SESSION['userID'];
 
 require_once 'GameState.php';
 
@@ -12,7 +19,7 @@ $dArray = array($d1, $d2, $d3);
 
 sort($dArray);
 
-$state = new GameState(1);
+$state = new GameState($sessionUser);
 $lastRoll = $state->lastRoll;
 $trip = $state->trip;
 

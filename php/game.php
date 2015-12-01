@@ -1,4 +1,13 @@
-<?php 
+<?php
+session_start();
+
+if(!isset($_SESSION['userID'])) {
+    header("Location:../login.html");
+}
+
+$sessionUser = $_SESSION['userID'];
+
+
 if(empty($_POST)) {
     $turn = 1;
 }
@@ -6,7 +15,7 @@ else {
     $turn = $_POST['turn'];
 }
 require_once 'GameState.php';
-$state = new GameState(1);
+$state = new GameState($sessionUser);
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +74,9 @@ $state = new GameState(1);
                   echo '<button id="btnRoll" class="btn" disabled>Roll Dice</button>';
               }
 
-              echo '<input type="hidden" name="turn" value='.$turn.'>'
+              echo '<input type="hidden" name="turn" value='.$turn.'>';
+              
+              echo '<input type="hidden" name="userID" value='.$sessionUser.'>'
               ?>
                 
             <button id="btnBack" class="btn">Back</button>

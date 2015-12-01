@@ -52,6 +52,7 @@ else {
         }
         else {
                 $_SESSION['userID'] = $userID;
+                $_SESSION['type'] = $userType;
                 $message = 'You are now logged in.';
                 if($userType == 'admin'){
                     $page = '../admin.php';

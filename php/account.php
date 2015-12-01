@@ -2,7 +2,7 @@
 session_start();
 
 if(!isset($_SESSION['userID'])) {
-    header("Location:login.html");
+    header("Location:../login.html");
 }
 
 $sessionUser = $_SESSION['userID'];
@@ -30,7 +30,7 @@ $sessionUser = $_SESSION['userID'];
             <div class="titleAcct">
                 <h1>User Info</h1>
             </div>
-            <table id="userInfo">
+            <table class="userInfo">
                 <tr>
                     <th>User Name</th>
                     <th>Total Points</th> 

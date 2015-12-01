@@ -1,6 +1,7 @@
 $(document).ready(function()
 {
     turn = $('[name="turn"]').val();
+    
     //alert(turn);
     if(turn == 0) {
         setTimeout(function(){diceRoll(turn);}, 3000);
@@ -13,7 +14,7 @@ $(document).ready(function()
     pRollsWon = 0;
     
     $('#btnRoll').click(function()
-    {             
+    {            
         diceRoll(turn);
     }); 
     
@@ -52,8 +53,8 @@ function diceRoll(turn) {
     dice3 = Math.floor((Math.random() * 6) + 1);
     //alert(dice1 + ', ' + dice2 + ', ' + dice3);
     diceFadeIn(dice1, dice2, dice3);
-
-    $.post("../php/gameController.php", { d1: dice1, d2: dice2, d3 : dice3, turn: turn }, function(rText, status)
+    
+    $.post("../php/gameController.php", { d1: dice1, d2: dice2, d3 : dice3, turn: turn}, function(rText, status)
     {   
         processResponse(rText, turn);
     });
