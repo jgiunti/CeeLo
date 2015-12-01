@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Add User</title>
- <link rel="stylesheet" href="CSS/style.css">
+ <link rel="stylesheet" href="../CSS/style.css">
 </head>
 <?php
 
@@ -18,12 +18,28 @@ $_SESSION['form_token'] = $form_token;
 <form action="submitAddUser.php" method="post">
 <fieldset>
 <p>
+<label for="first">First Name</label>
+<input type="text" id="firstName" name="first" maxlength="20"/>
+</p>
+<p>
+<label for="last">Last Name</label>
+<input type="text" id="lastName" name="last" maxlength="20"/>
+</p>
+<p>
+<label for="mail">E-mail</label>
+<input type="text" id="email" name="mail" maxlength="20"/>
+</p>
+<p>
 <label for="username">Username</label>
-<input type="text" id="username" name="username" value="" maxlength="20" pattern=".{4,}"/>
+<input type="text" id="username" name="username" maxlength="20" />
 </p>
 <p>
 <label for="password">Password</label>
-<input type="text" id="password" name="password" value="" maxlength="20" pattern=".{4,}"/>
+<input type="password" id="password" name="password"  maxlength="20" />
+</p>
+<p>
+<label for="type">User Type</label>
+<input type="text" id="uType" name="type" maxlength="20"/>
 </p>
 <p>
 <input type="hidden" name="form_token" value="<?php echo $form_token; ?>" />

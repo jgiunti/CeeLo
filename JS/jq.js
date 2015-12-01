@@ -42,7 +42,7 @@ $(document).ready(function()
    
    $('#btnBack').click(function()
     {             
-        window.location = "../main.html";
+        window.location = "../main.php";
    });
    
    var dialog = $("#dialog");

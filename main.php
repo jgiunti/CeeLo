@@ -1,0 +1,37 @@
+<?php 
+session_start();
+
+if(!isset($_SESSION['userID'])) {
+    header("Location:login.html");
+}
+?>
+
+<!DOCTYPE html>
+<html >
+    <head>
+      <meta charset="UTF-8">
+      <title>Main</title>        
+          <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,700' rel='stylesheet' type='text/css'>
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+          <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+          <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>          
+          <script language='Javascript' type='text/javascript' src="JS/jq.js"></script>
+          <link rel="stylesheet" href="CSS/style.css">
+    </head>
+    <body>
+<div class='hiddenForm'></div>    
+<div class="button-container">
+    <div class="menu">
+      <div class="menu-form">
+          <div class="menu-button">
+            <button class="btn">Tutorial</button>
+            <button id="new" class="btn">New Game</button>
+            <button id="continue" class="btn">Continue</button>
+            <button id="profile" class="btn">Profile</button>
+        </div>
+      </div>
+     </div>
+  </div>
+  <div id="dialog" style='color: black'></div>
+</body>
+</html>

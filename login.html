@@ -14,18 +14,19 @@
                 </button>
         <div class="prof-form">
         <div class="prof-fields">
+        <form action="php/submitLogin.php" method="post">
             <div class="field">
-                <input type="text" id="fieldUser" class="input" required pattern=.*\S.* />
+                <input type="text" id="fieldUser" name='user' class="input" required pattern=.*\S.* />
                 <label for="fieldUser" class="label">Username</label>
             </div>
             <div class="field">
-                <input type="password" id="fieldPassword" class="input" required pattern=.*\S.* />
+                <input type="password" id="fieldPassword" name='password' class="input" required pattern=.*\S.* />
                 <label for="fieldPassword" class="label">Password</label>
             </div>
         <div class="prof-footer">
-          <button class="btn">Login</button>
-          <button class="btn">Register</button>
+          <input class='btn' type="submit" value="Login" />
         </div>
+        </form>
         </div>
         </div>
     </div>

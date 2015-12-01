@@ -1,3 +1,14 @@
+<?php 
+session_start();
+
+if(!isset($_SESSION['userID'])) {
+    header("Location:login.html");
+}
+
+$sessionUser = $_SESSION['userID'];
+?>
+
+
 <!DOCTYPE html>
 
 <html>
@@ -12,8 +23,8 @@
         <?php 
         require_once 'User.php';
         require_once 'gameHist.php';
-        $user = new User(1);
-        $history = new GameHistory(1);
+        $user = new User($sessionUser);
+        $history = new GameHistory($sessionUser);
         ?>              
         <div id="user">
             <div class="titleAcct">

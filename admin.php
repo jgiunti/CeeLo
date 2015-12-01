@@ -1,3 +1,13 @@
+<?php 
+session_start();
+
+if(!isset($_SESSION['userID'])) {
+    header("Location:login.html");
+}
+
+$sessionUser = $_SESSION['userID'];
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -9,10 +19,10 @@
     </head>
     <body>
         <h2>Admin Page</h2>
-        <form action="addUser.php" method="post">
+        <form action="php/addUser.php" method="post">
         <input type="submit" value="Add User" />
         </form>
-        <form action="deleteUser.php" method="post">
+        <form action="php/deleteUser.php" method="post">
         <input type="submit" value="Delete User" />
         </form>
     </body>

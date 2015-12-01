@@ -28,7 +28,7 @@ elseif (ctype_alnum($_POST['password']) != true){
 else {
     $mysql_host = 'localhost';
     $mysql_username = 'root';
-    $mysql_password = 'password';
+    $mysql_password = '';
     $mysql_dbname = 'cs444';
     $user = filter_var($_POST['user'], FILTER_SANITIZE_STRING);
     $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
@@ -48,16 +48,16 @@ else {
 
         if($userID == false) {
                 $message = 'Login Failed';
-                $page = 'login.html';
+                $page = '../login.html';
         }
         else {
                 $_SESSION['userID'] = $userID;
                 $message = 'You are now logged in.';
                 if($userType == 'admin'){
-                    $page = 'admin.html';
+                    $page = '../admin.php';
                 }
                 else{
-                    $page = 'main.html';
+                    $page = '../main.php';
                 }
         }
     }

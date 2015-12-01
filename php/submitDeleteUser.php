@@ -39,7 +39,7 @@ else {
 <body>
     <h2>Submit Delete User Status</h2>
     <p><?php echo $message; ?>
-    <form action="admin.html" method="post">
+    <form action="admin.php" method="post">
     <input type="submit" value="Continue" />
     </form>
 </body>

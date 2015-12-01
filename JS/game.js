@@ -19,7 +19,7 @@ $(document).ready(function()
     
     $('#btnBack').click(function()
     {
-        window.location = "../main.html";
+        window.location = "../main.php";
     }); 
     
     var dialog = $("#dialog");
@@ -37,7 +37,7 @@ $(document).ready(function()
           text: "Ok",
           "class": 'btn',
           click: function() {
-            window.location = "../main.html";
+            window.location = "../main.php";
           }
  
       
