@@ -65,7 +65,7 @@ $state = new GameState($sessionUser);
         </div>
                
         <div class="container3" align="center">
-            <div class="prof-footer">
+            <div class="login-footer">
               <?php
               if ($turn == 1){
                   echo '<button id="btnRoll" class="btn">Roll Dice</button>';
