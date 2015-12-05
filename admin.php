@@ -1,4 +1,7 @@
 <?php 
+
+//Karl Engemann
+
 session_start();
 
 if(!isset($_SESSION['userID']) || $_SESSION['userID'] != 'admin') {
@@ -9,7 +12,6 @@ $sessionUser = $_SESSION['userID'];
 ?>
 
 <!DOCTYPE html>
-
 <html>
     <head>
         <title>Admin</title>
