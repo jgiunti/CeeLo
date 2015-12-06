@@ -1,25 +1,28 @@
 <?php
+
+//Karl Engemann
+
 session_start();
 
 require_once 'dbConnection.php';
 
-if(isset( $_SESSION['userID'] )){
-    $message = 'User is already logged in.';
+if(isset($_SESSION['userID'] )){
+    $output = 'User is already logged in.';
 }
-if(!isset( $_POST['username'], $_POST['password'])){
-    $message = 'Please enter a valid username and password.';
+if(!isset($_POST['username'], $_POST['password'])){
+    $output = 'Please enter a valid username and password.';
 }
-elseif (strlen( $_POST['username']) > 20 || strlen($_POST['username']) < 4){
-    $message = 'Username must be between 4 and 20 characters.';
+elseif (strlen($_POST['username']) > 20 || strlen($_POST['username']) < 4){
+    $output = 'Username must be between 4 and 20 characters.';
 }
-elseif (strlen( $_POST['password']) > 20 || strlen($_POST['password']) < 4){
-    $message = 'Password must be between 4 and 20 characters.';
+elseif (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 4){
+    $output = 'Password must be between 4 and 20 characters.';
 }
 elseif (ctype_alnum($_POST['username']) != true){
-    $message = "Username must be alpha numeric.";
+    $output = "Username must be alpha numeric.";
 }
 elseif (ctype_alnum($_POST['password']) != true){
-    $message = "Password must be alpha numeric.";
+    $output = "Password must be alpha numeric.";
 }
 else {
     $mysql_host = 'localhost';
@@ -53,20 +56,20 @@ else {
 
             $stmt->execute();
 
-            unset( $_SESSION['form_token'] );
+            unset($_SESSION['pageID']);
 
-            $message = 'New user added.';
+            $output = 'New user added.';
         }
         else {
-            $message = 'User already exists';
+            $output = 'User already exists';
         }       
     }
     catch(Exception $e) {
-        if( $e->getCode() == 23000) {
-            $message = 'Username already exists.';
+        if($e->getCode() == 23000) {
+            $output = 'Username already exists.';
         }
         else {
-            $message = 'Error.';
+            $output = 'Error.';
         }
     }
 }
@@ -78,7 +81,7 @@ else {
 </head>
 <body>
     <h2>Submit Add User Status</h2>
-    <p><?php echo $message;?>
+    <p><?php echo $output;?>
     <form action="../admin.php" method="post">
     <input type="submit" value="Continue" />
     </form>    

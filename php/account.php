@@ -55,7 +55,7 @@ $sessionUser = $_SESSION['userID'];
                 ?>          
             </table>
             <div class="container2">
-                <div class="prof-footer">
+                <div class="login-footer">
                     <button id ="btnViewHist" class="btn">View Game History</button>
                     <button id="btnBack" class="btn">Back</button>
                 </div>

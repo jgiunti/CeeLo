@@ -1,29 +1,32 @@
 <?php
+
+//Karl Engemann
+
 session_start();
 
-if(isset( $_SESSION['userID'] )){
-    $message = 'User is already logged in.';
-    $page = 'login.html';
+if(isset($_SESSION['userID'] )){
+    $output = 'User is already logged in.';
+    $page = '../login.html';
 }
-if(!isset( $_POST['user'], $_POST['password'])){
-    $message = 'Please enter a valid username and password.';
-    $page = 'login.html';
+if(!isset($_POST['user'], $_POST['password'])){
+    $output = 'Please enter a valid username and password.';
+    $page = '../login.html';
 }
-elseif (strlen( $_POST['user']) > 20 || strlen($_POST['user']) < 4){
-    $message = 'Username must be between 4 and 20 characters.';
-    $page = 'login.html';
+elseif (strlen($_POST['user']) > 20 || strlen($_POST['user']) < 4){
+    $output = 'Username must be between 4 and 20 characters.';
+    $page = '../login.html';
 }
-elseif (strlen( $_POST['password']) > 20 || strlen($_POST['password']) < 4){
-    $message = 'Password must be between 4 and 20 characters.';
-    $page = 'login.html';
+elseif (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 4){
+    $output = 'Password must be between 4 and 20 characters.';
+    $page = '../login.html';
 }
 elseif (ctype_alnum($_POST['user']) != true){
-    $message = "Username must be alpha numeric.";
-    $page = 'login.html';
+    $output = "Username must be alpha numeric.";
+    $page = '../login.html';
 }
 elseif (ctype_alnum($_POST['password']) != true){
-    $message = "Password must be alpha numeric.";
-    $page = 'login.html';
+    $output = "Password must be alpha numeric.";
+    $page = '../login.html';
 }
 else {
     $mysql_host = 'localhost';
@@ -42,18 +45,19 @@ else {
         $stmt->bindParam(':password', $password, PDO::PARAM_STR, 40);
         
         $stmt->execute();
-
-        $userID = $stmt->fetchColumn();
-        $userType = $stmt->fetchColumn(3);
-
+        
+        $res = $stmt->fetch_assoc();
+        $userID = $res['userID'];
+        $userType = $res['userType'];
+        
         if($userID == false) {
-                $message = 'Login Failed';
+                $output = 'Login Failed';
                 $page = '../login.html';
         }
         else {
                 $_SESSION['userID'] = $userID;
-                $_SESSION['type'] = $userType;
-                $message = 'You are now logged in.';
+                $_SESSION['userType'] = $userType;
+                $output = 'You are now logged in.';
                 if($userType == 'admin'){
                     $page = '../admin.php';
                 }
@@ -63,7 +67,7 @@ else {
         }
     }
     catch(Exception $e){
-        $message = 'Error.';
+        $output = 'Error.';
     }
 }
 ?>
@@ -74,7 +78,7 @@ else {
 <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-<p><?php echo $message; ?>
+<p><?php echo $output; ?>
         <form action="<?php echo $page; ?>" method="post">
         <input type="submit" value="Continue" />
         </form>    
