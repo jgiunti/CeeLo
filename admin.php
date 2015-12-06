@@ -4,7 +4,7 @@
 
 session_start();
 
-if(!isset($_SESSION['userID']) || $_SESSION['userID'] != 'admin') {
+if(!isset($_SESSION['userID']) || $_SESSION['userType'] != 'admin') {
     header("Location:login.html");
 }
 

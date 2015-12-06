@@ -22,7 +22,7 @@ $_SESSION['pageID'] = $pageID;
         <fieldset>
             <p>
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" value="" maxlength="20" pattern=".{4,}"/>
+                <input type="text" id="username" name="user" value="" maxlength="20" pattern=".{4,}"/>
             </p>
             <p>
                 <input type="hidden" name="pageID" value="<?php echo $pageID; ?>" />

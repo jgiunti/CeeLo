@@ -20,16 +20,22 @@ else {
     try {
         $db = new Database();
         $conn = $db->connection;
-        $userID = $conn->query("SELECT userID FROM USERS WHERE userName = '$user'");
+        //$query = $conn->query("SELECT userID FROM USERS WHERE userName = $user");
+        
+        $data = $conn->query("SELECT userID FROM USERS WHERE userName = '$user'");
+        $resRow = $data->fetch_assoc();       
+        
+        $userID = $resRow['userID'];
         
         $dbh = new PDO("mysql:host=$mysql_host;dbname=$mysql_dbname", $mysql_username, $mysql_password);
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt1 = $dbh->prepare("DELETE * FROM points where userID = '$userID'");
+        $stmt1 = $dbh->prepare("DELETE FROM points where userID = :userID");
+        $stmt1->bindParam(':userID', $userID);
         $stmt1->execute();
         
-        $stmt2 = $dbh->prepare("DELETE * FROM users where userName = ':user'");
-        $stmt2->bindParam(':user', $user, PDO::PARAM_STR);
+        $stmt2 = $dbh->prepare("DELETE FROM users where userID = :userID");
+        $stmt2->bindParam(':userID', $userID);
         $stmt2->execute();
 
         unset($_SESSION['pageID']);
@@ -37,7 +43,7 @@ else {
         $output = 'User deleted.';
     }
     catch(Exception $e) {
-        $output = 'Error.';
+        $output = $e;
     }
 }
 ?>
@@ -50,7 +56,7 @@ else {
 <body>
     <h2>Submit Delete User Status</h2>
     <p><?php echo $output; ?>
-    <form action="admin.php" method="post">
+    <form action="../admin.php" method="post">
         <input type="submit" value="Continue" />
     </form>
 </body>

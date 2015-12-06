@@ -46,7 +46,7 @@ else {
         
         $stmt->execute();
         
-        $res = $stmt->fetch_assoc();
+        $res = $stmt->fetch(PDO::FETCH_ASSOC);
         $userID = $res['userID'];
         $userType = $res['userType'];
         
@@ -59,7 +59,7 @@ else {
                 $_SESSION['userType'] = $userType;
                 $output = 'You are now logged in.';
                 if($userType == 'admin'){
-                    $page = '../admin.php';
+                    $page = '../php/admin.php';
                 }
                 else{
                     $page = '../main.php';

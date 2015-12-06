@@ -63,21 +63,19 @@ function diceRoll(turn) {
 function processResponse(rText, turn) {
     if(rText == "gameWon" || rText == "gameLost") {
         if(rText == "gameWon") {
-            diceFadeOut(function () {
-                $('#dialog').html("Congrats, You Won!").promise().done(function() {
+            diceFadeOut();
+            $('#dialog').html("Congrats, You Won!").promise().done(function() {
                     $('#dialog').dialog("open");
                     return;
                 });
-            });
             
         }
         else {
-            diceFadeOut(function () {
-                $('#dialog').html("Sorry, you lost!").promise().done(function() {
+            diceFadeOut();
+            $('#dialog').html("Sorry, You Lost!").promise().done(function() {
                     $('#dialog').dialog("open");
                     return;
                 });
-            });
         }
         return;
     }
